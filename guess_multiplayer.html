@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css"> 
+	<script type="text/javascript">
+
+		var answer = Math.round(Math.random()*100);
+		var tryCount = 0;
+		var maxTryCount = 6;
+		var plaerNumber = 1;
+
+		function readInt(){
+			var number = document.getElementById("userAnswer").value;
+			return parseInt(number);
+			// return +document.getElementById("userAnswer").value;
+		}
+
+		function write(text){
+			document.getElementById("info").innerHTML = text;
+		}
+
+		function hide(id){
+			document.getElementById(id).style.display = "none";
+		}
+
+		function  changePlayer(){
+			if(plaerNumber == 1) return 2
+			else return 1
+		}
+
+		function guess(){
+			tryCount++;
+
+			var userAnswer = readInt();
+			if (isNaN(userAnswer)){
+				write("Введите число от 0 до 100");
+				return
+			}
+			if(userAnswer == answer){
+				write("<b>Поздравляем! Победил игрок " + plaerNumber + "</b>");
+				hide("button");
+				hide("userAnswer");
+			} else if(tryCount >= maxTryCount){
+				write("Победителей нет!<br>Правильный ответ: " + answer);
+				hide("button");
+				hide("userAnswer");
+			} else if(userAnswer > answer){
+				write("Игрок " + plaerNumber + " ввел слишком большое число.<br>Игрок " + changePlayer() + " введите число от 0 до 100");
+			} else if(userAnswer < answer){
+				write("Игрок " + plaerNumber + " ввел слишком маленькое число<br>Игрок " + changePlayer() + " введите число от 0 до 100");				
+			}
+			plaerNumber = changePlayer();
+		}
+
+	</script>
+</head>
+<body>
+
+<div class="content">
+	<div class="header">
+		<a href="index.html">Главная</a>
+		<a href="puzzle.html">Загадки</a>
+		<a href="guess.html">Угадайка</a>
+		<a href="#">Угадайка мультиплеер</a>
+		<a href="password_generator.html">Генератор паролей</a>
+	</div>
+
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+
+			<h1>Игра угадайка мультиплеер</h1>
+
+			<div class="box">
+
+				<p id="info">Угадайте число от 0 до 100. Ходит игрок 1</p>
+				<input type="text" id="userAnswer">
+				<br>
+				<a href="#" onClick="guess();" id="button">Начать</a>				
+			</div>
+
+        </div>
+    </div>
+</div>
+
+	
+
+</div>
+<div class="footer">
+	Copyright &copy; Vladimir Skomorokhov
+<div>
+
+
+</body>
+</html>

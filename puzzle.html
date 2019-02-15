@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css"> 
+	<script type="text/javascript">
+
+		var score = 0;
+
+		function checkAnswer(inputId, answers){
+			var userAnswer = document.getElementById(inputId).value;
+			userAnswer = userAnswer.toLowerCase();
+			for(var i = 0; i < answers.length; i++){
+				if(userAnswer == answers[i]){
+					score++;
+					break;
+				}
+			}
+		}
+		
+		function checkAnswers() {
+
+			checkAnswer("userAnswer1", ["дождь", "дождик"]);
+			checkAnswer("userAnswer2", ["календарь", "календарик", "склерозник", "численник"]);
+			checkAnswer("userAnswer3", ["секрет", "секретом", "тайна", "тайной"]);
+
+			if(score == 3){
+				alert("Поздравляем! Вы верно ответили на " + score + " загадки! Вы молодец!");
+			} else if(score == 2){
+				alert("Вы дали " + score + " верных ответа! Можете попробовать еще раз.");
+			} else if(score == 1){
+				alert("Вы дали " + score + " верный ответ! Попробуйте еще раз.");
+			} else alert("Вы дали " + score + " верных ответов! Срочно приступайте к тотальному самообразованию!");
+
+		}
+
+	</script>
+</head>
+<body>
+
+<div class="content">
+	<div class="header">
+		<a href="index.html">Главная</a>
+		<a href="#">Загадки</a>
+		<a href="guess.html">Угадайка</a>
+		<a href="guess_multiplayer.html">Угадайка мультиплеер</a>
+		<a href="password_generator.html">Генератор паролей</a>
+	</div>
+
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+
+			<h1>Игра в загадки</h1>
+
+			<div class="box">
+
+				<p>Шел долговяз, в сыру землю увяз.</p>
+				<input type="text" id="userAnswer1">
+
+				<p>На раскрашенных страницах много праздников хранится.</p>
+				<input type="text" id="userAnswer2">
+
+				<p>Чем можно поделиться только один раз?</p>
+				<input type="text" id="userAnswer3">
+
+				<br>
+				<a href="#" onClick="checkAnswers();">Ответить</a>
+
+			</div>
+
+        </div>
+    </div>
+</div>
+
+	
+
+</div>
+<div class="footer">
+	Copyright &copy; Vladimir Skomorokhov
+<div>
+
+
+</body>
+</html>
